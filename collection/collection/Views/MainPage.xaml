@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="collection.Views.MainPage"
+             Title="System zarządzania kolekcjonerstwem"
+           
+             BackgroundColor="#4B5457">
+
+    <Grid RowDefinitions="Auto,*" Padding="16" RowSpacing="12">
+        <Border StrokeThickness="0" BackgroundColor="#FFFFFF" Padding="14" StrokeShape="RoundRectangle 16">
+            <VerticalStackLayout Spacing="10">
+                <Label Text="Twoje kolekcje"
+                       FontAttributes="Bold"
+                       FontSize="24"
+                       TextColor="#000000" />
+
+                <Entry x:Name="CollectionNameEntry" Placeholder="Nazwa kolekcji" TextColor="Black" PlaceholderColor="Gray" />
+
+                <Picker x:Name="CategoryPicker" Title="Rodzaj kolekcji" TextColor="Black" TitleColor="Gray" />
+
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                    <Button Text="Dodaj kolekcję" BackgroundColor="#4FB9D6" Clicked="OnAddCollectionClicked" />
+                    <Button Grid.Column="1"
+                            Text="Otwórz zaznaczoną"
+                            BackgroundColor="#D6914F"
+                            Clicked="OnOpenCollectionClicked" />
+                </Grid>
+            </VerticalStackLayout>
+        </Border>
+
+        <CollectionView Grid.Row="1"
+                        x:Name="CollectionsView"
+                        SelectionMode="Single"
+                        Margin="0,4,0,0">
+            <CollectionView.EmptyView>
+                <Label Text="Brak kolekcji. Dodaj pierwszą z góry."
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       TextColor="Black" />
+            </CollectionView.EmptyView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Margin="0,0,0,10"
+                            BackgroundColor="#FFFFFF"
+                            Stroke="#4FB9D6"
+                            StrokeShape="RoundRectangle 12"
+                            Padding="12">
+                        <Grid RowDefinitions="Auto,Auto">
+                            <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="18" TextColor="Black" />
+                            <Label Grid.Row="1" Text="{Binding Category}" TextColor="#D6914F" />
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+
+</ContentPage>

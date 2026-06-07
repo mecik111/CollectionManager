@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="collection.Views.CollectionDetailsPage"
+             BackgroundColor="#4B5457">
+
+    <Grid Padding="16" RowDefinitions="Auto,Auto,*" RowSpacing="12">
+        <Label x:Name="TitleLabel"
+               FontSize="24"
+               FontAttributes="Bold"
+               TextColor="Black" />
+
+        <Grid Grid.Row="1" ColumnDefinitions="*,*,*" ColumnSpacing="8">
+            <Button Text="Dodaj element" Clicked="OnAddItemClicked" BackgroundColor="#4FB9D6"/>
+            <Button Grid.Column="1" Text="Edytuj element" BackgroundColor="#D6914F" Clicked="OnEditItemClicked" />
+            <Button Grid.Column="2" Text="Usuń element" BackgroundColor="#4FB9D6" Clicked="OnDeleteItemClicked" />
+        </Grid>
+
+        <CollectionView Grid.Row="2"
+                        x:Name="ItemsView"
+                        SelectionMode="Single">
+            <CollectionView.EmptyView>
+                <Label Text="Brak elementów w kolekcji."
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       TextColor="Black" />
+            </CollectionView.EmptyView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Margin="0,0,0,10"
+                            Padding="12"
+                            BackgroundColor="White"
+                            Stroke="#816E5B"
+                            StrokeShape="RoundRectangle 10">
+                        <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto">
+                            <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="18" TextColor="Black" />
+                            <Label Grid.Column="1"
+                                   Text="{Binding Price, StringFormat='Cena: {0:F2} zł'}"
+                                   TextColor="#D6914F" />
+
+                            <Label Grid.Row="1" Text="{Binding Status, StringFormat='Status: {0}'}" TextColor="#4FB9D6" />
+                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding Rating, StringFormat='Ocena: {0}/10'}" TextColor="#4B5457" />
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+
+</ContentPage>

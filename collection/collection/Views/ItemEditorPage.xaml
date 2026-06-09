@@ -8,13 +8,13 @@
     <ScrollView>
         <VerticalStackLayout Padding="16" Spacing="10">
             <Label Text="Nazwa elementu" TextColor="Black" />
-            <Entry x:Name="NameEntry" TextColor="Black" PlaceholderColor="Gray" />
+            <Entry x:Name="NameEntry" TextColor="Black" PlaceholderColor="Gray" BackgroundColor="White" />
 
             <Label Text="Cena" TextColor="Black" />
-            <Entry x:Name="PriceEntry" Placeholder="00.00" Keyboard="Numeric" TextColor="Black" PlaceholderColor="Gray" />
+            <Entry x:Name="PriceEntry" Placeholder="00.00" Keyboard="Numeric" TextColor="Black" PlaceholderColor="Gray" BackgroundColor="White" />
 
             <Label Text="Status" TextColor="Black" />
-            <Picker x:Name="StatusPicker" TextColor="Black" TitleColor="Gray" />
+            <Picker x:Name="StatusPicker" TextColor="Black" TitleColor="Gray" BackgroundColor="White" />
 
             <Label Text="Ocena (1-10)" TextColor="Black" />
             <Slider x:Name="RatingStepper" Minimum="1" Maximum="10" Value="1" ValueChanged="OnRatingChanged" />
